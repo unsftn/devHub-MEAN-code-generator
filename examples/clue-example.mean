@@ -1,0 +1,52 @@
+app DevHub
+
+part {
+     name: Article
+     multi: yes
+     actions: Delete Article, Edit Article, Create Article, Read Article
+     owner: Registered
+     }
+
+->action {
+       name: Delete Article
+       do: delete [prompt: yes]
+       who: owner[Admin, Registered[writter]]
+       }
+
+->action {
+       name: Read Article
+       do: read
+       who: *
+       }
+
+->action {
+       name: Edit Article
+       do: edit
+       who: owner
+       }
+
+->action {
+       name: Create Article
+       do: create
+       who: Admin, Registered
+       }
+
+actor {
+      name: Admin
+      group: admin
+      }
+
+actor {
+      name: Registered
+      group: Reader, Writter
+      }
+
+actor-group {
+            name: Reader
+            actions: Read Article
+            }
+
+actor-group {
+            name: Writter
+            actions: Create Article
+            }
