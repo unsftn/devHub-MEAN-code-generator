@@ -3,6 +3,11 @@ app DevHub
 part {
      name: Article
      multi: yes
+     properties: {
+                 [title, String],
+                 [content, String],
+                 [author, ~Registered]
+     }
      actions: Delete Article, Edit Article, Create Article, Read Article
      owner: Registered
      }
