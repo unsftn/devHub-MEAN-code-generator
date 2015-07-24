@@ -18,11 +18,7 @@ BlockType:
 PartType:
   'part' '{'
     // TODO: Every piece must be mentioned once but order doesn't matter
-    (partNamePiece|partMultiPiece|partPropertiesPiece|partActionPiece|partOwnerPiece)
-    (partNamePiece|partMultiPiece|partPropertiesPiece|partActionPiece|partOwnerPiece)
-    (partNamePiece|partMultiPiece|partPropertiesPiece|partActionPiece|partOwnerPiece)
-    (partNamePiece|partMultiPiece|partPropertiesPiece|partActionPiece|partOwnerPiece)
-    (partNamePiece|partMultiPiece|partPropertiesPiece|partActionPiece|partOwnerPiece)
+    PartNamePiece | PartMultiPiece | PartPropertiesPiece | PartActionPiece | PartOwnerPiece
   '}'
 ;
 
@@ -52,5 +48,26 @@ Type:
   'String' | 'Text' | 'Number' | 'Boolean' | Reference
 ;
 
-// Reference:
+Reference:
+  'TODO'
+;
   
+PartActionPiece:
+  'TODO'
+;
+
+PartOwnerPiece:
+  'TODO'
+;
+
+ActionType:
+  'TODO'
+;
+
+ActorType:
+  'TODO'
+;
+
+ActorGroupType:
+  'TODO'
+;  
