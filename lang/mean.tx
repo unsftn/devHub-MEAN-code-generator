@@ -1,0 +1,56 @@
+/*
+  This is a textX specification of MEAN.TX DSL for generating MEAN.IO stack applications.
+  Authors: Nemanja Ristić <twcbason AT hotmail DOT com>
+           Daniel Kupčo <kupcodanex AT outlook DOT com>
+           Novak Boškov <gnovak DOT boskov AT gmail DOT com>
+*/
+
+MeanModel:
+  "app" name=STRING
+  (description=STRING)?
+  blocks+=BlockType
+;
+
+BlockType:
+  PartType | ActionType | ActorType | ActorGroupType
+;
+
+PartType:
+  'part' '{'
+    // TODO: Every piece must be mentioned once but order doesn't matter
+    (partNamePiece|partMultiPiece|partPropertiesPiece|partActionPiece|partOwnerPiece)
+    (partNamePiece|partMultiPiece|partPropertiesPiece|partActionPiece|partOwnerPiece)
+    (partNamePiece|partMultiPiece|partPropertiesPiece|partActionPiece|partOwnerPiece)
+    (partNamePiece|partMultiPiece|partPropertiesPiece|partActionPiece|partOwnerPiece)
+    (partNamePiece|partMultiPiece|partPropertiesPiece|partActionPiece|partOwnerPiece)
+  '}'
+;
+
+PartNamePiece:
+  'name:' partname=STRING
+;
+
+PartMultiPiece:
+  'multi:' multi=YesNo
+;
+
+YesNo:
+  'yes' | 'no'
+;
+
+PartPropertiesPiece:
+  'properties:' '{'
+     properties*=Property[',']
+   '}'
+;
+
+Property:
+  '[' name=STRING ',' type=Type ']'
+;
+
+Type:
+  'String' | 'Text' | 'Number' | 'Boolean' | Reference
+;
+
+// Reference:
+  
