@@ -1,0 +1,22 @@
+
+Initmongoose{
+    name : model
+	init: dependancy
+}
+
+Article {
+	name : articlename
+	fields : name
+	value : values
+	reference : ref
+}
+
+Validations {
+	validate: validationandmessage
+}
+
+Ending {
+    end: model
+}
+
+
