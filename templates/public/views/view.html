@@ -1,0 +1,15 @@
+{% import 'macros.html' as macros %}
+<section data-ng-controller="{{ ControllerName }}" data-ng-init="findOne()">
+  <h2>{{{{ item }}.name}}</h2>
+  <div data-ng-if="hasAuthorization({{ item }})">
+    <a class="btn" href="/{{ items }}/{{{{ item }}._id}}/edit">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn" data-ng-click="remove({{ item }});">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  {#
+    Here goes the rest of the item properties that will be displayed...
+  #}
+</section>

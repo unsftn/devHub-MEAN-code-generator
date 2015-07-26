@@ -1,0 +1,15 @@
+{% macro def_input(item, property) %}
+    <label>{{property.label}}</label>
+    {% if property.type == "Combobox" %}
+        <select>
+        <option></option>
+        {% for possibleValue in property.values %}
+        <option>{{possibleValue}}</option>
+        {% endfor %}
+        </select>
+    {% elif property.type == "Text" %}
+        <textarea name = "{{ property.name }}" class="form-control" data-ng-model="{{ item.name }}.{{ property.name }}" id="{{ property.name }}" cols="30" rows="10" placeholder="{{ property.label }}" required></textarea>
+    {% else %}
+        <input name = "{{ property.name }}" type = "{{property.type|inputType}}" class="form-control" data-ng-model="{{ item.name }}.{{ property.name }}" id="{{ property.name }}" placeholder="{{ property.label }}" required>
+    {% endif %}
+{% endmacro %}

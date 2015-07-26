@@ -6,3 +6,6 @@
 
 # visualization
 visualization/
+
+#Sublime files
+*.sublime*
