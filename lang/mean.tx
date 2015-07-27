@@ -18,7 +18,11 @@ BlockType:
 PartType:
   'part' '{'
     // TODO: Every piece must be mentioned once but order doesn't matter
-    PartNamePiece | PartMultiPiece | PartPropertiesPiece | PartActionPiece | PartOwnerPiece
+    namePiece=PartNamePiece
+    multiPiece=PartMultiPiece
+    propertiesPiece=PartPropertiesPiece
+    actionPiece=PartActionPiece
+    ownerPart=PartOwnerPiece
   '}'
 ;
 
@@ -41,7 +45,11 @@ PartPropertiesPiece:
 ;
 
 Property:
-  '[' name=STRING ',' type=Type ',' ('visible')?']'
+  '[' name=STRING ',' type=Type (',' visibility=Visible)?']'
+;
+
+Visible:
+  'visible'
 ;
 
 Type:
@@ -53,19 +61,109 @@ Reference:
 ;
   
 PartActionPiece:
-  'TODO'
+  'actions:' '{'
+    actions*=Reference[',']
+  '}'
 ;
 
 PartOwnerPiece:
-  'TODO'
+  'owner:' '{'
+    owners*=Reference[',']
+  '}'
 ;
 
 ActionType:
-  'TODO'
+  '->action' '{'
+    ActionNamePiece
+    ActionDoPiece
+    ActionOnPiece
+  '}'
+;
+
+ActionNamePiece:
+  'name:' name=STRING
+;
+
+ActionDoPiece:
+  'do:' CRUDOperation (ActionDoPiecePrompt)?
+;
+
+CRUDOperation:
+  'create' | 'read' | 'update' | 'delete'
+;
+
+ActionDoPiecePrompt:
+  '[' 'prompt' prompt=YesNo ']'
+;
+
+ActionWhoPiece:
+  'who:' (ActionWhoPieceOwner | WhoItems | Anyone)
+;
+
+Anyone:
+  '*'
+;
+
+ActionWhoPieceOwner:
+  // TODO: 'owner' is owner of referenced part owner if exists
+  // whoItems explain which actor or which actors have permission to do the action
+  'owner' (whoItems)?
+;
+
+WhoItems:
+  '['
+    whoItems*=WhoItem[',']
+  ']'
+;
+
+WhoItem:
+  who=Reference
 ;
 
 ActorType:
-  'TODO'
+  ActorNamePiece
+  ActorGroupPiece
+;
+
+ActorNamePiece:
+  'name:' name=STRING
+;
+
+ActorGroupPiece:
+  'group:' (ActorGroupPieceGroup | ActorGroupPieceGroups)
+;
+
+ActorGroupPieceGroups:
+  '['
+    groups+=ActorGroupPieceGroup[',']
+  ']'
+;
+
+ActorGroupPieceGroup:
+  actor_group=Reference
+;
+
+ActorGroupType:
+  ActorGroupNamePiece
+  ActorGroupActionsPiece
+;
+
+ActorGroupNamePiece:
+  'name' name=STRING
+;
+
+ActorGroupActionsPiece:
+  'actions:' (ActorGroupActionsPieceAction | ActorGroupActionsPieceActions)
+;
+
+ActorGroupActionsPieceActions:
+  '['
+    actions+=ActorGroupActionsPieceAction[',']
+  ']'
+;
+
+ActorGroupActionsPieceAction:
+  action=Reference
 ;
 
 ActorGroupType:
