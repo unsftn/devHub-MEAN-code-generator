@@ -12,7 +12,7 @@ MeanModel:
 ;
 
 BlockType:
-  PartType | ActionType | ActorType | ActorGroupType
+   PartType | ActionType | ActorType | ActorGroupType
 ;
 
 PartType:
@@ -77,6 +77,7 @@ ActionType:
     ActionNamePiece
     ActionDoPiece
     ActionOnPiece
+    ActionWhoPiece
   '}'
 ;
 
@@ -85,7 +86,7 @@ ActionNamePiece:
 ;
 
 ActionDoPiece:
-  'do:' CRUDOperation (ActionDoPiecePrompt)?
+  'do:' actionCRUD=CRUDOperation (ActionDoPiecePrompt)?
 ;
 
 CRUDOperation:
@@ -93,7 +94,21 @@ CRUDOperation:
 ;
 
 ActionDoPiecePrompt:
-  '[' 'prompt' prompt=YesNo ']'
+  '[' 'prompt:' prompt=YesNo ']'
+;
+
+ActionOnPiece:
+  'on:' (ActionOnPiecePart | ActionOnPieceParts)
+;
+
+ActionOnPiecePart:
+  part=Reference
+;
+
+ActionOnPieceParts:
+  '['
+    parts+=ActionOnPiecePart[',']
+  ']'
 ;
 
 ActionWhoPiece:
@@ -107,7 +122,7 @@ Anyone:
 ActionWhoPieceOwner:
   // TODO: 'owner' is owner of referenced part owner if exists
   // whoItems explain which actor or which actors have permission to do the action
-  'owner' (whoItems)?
+  'owner' (WhoItems)?
 ;
 
 WhoItems:
@@ -121,8 +136,10 @@ WhoItem:
 ;
 
 ActorType:
-  ActorNamePiece
-  ActorGroupPiece
+  'actor' '{'
+    ActorNamePiece
+    ActorGroupPiece
+  '}'
 ;
 
 ActorNamePiece:
@@ -144,12 +161,14 @@ ActorGroupPieceGroup:
 ;
 
 ActorGroupType:
-  ActorGroupNamePiece
-  ActorGroupActionsPiece
+  'actor-group' '{'
+    ActorGroupNamePiece
+    ActorGroupActionsPiece
+  '}'
 ;
 
 ActorGroupNamePiece:
-  'name' name=STRING
+  'name:' name=STRING
 ;
 
 ActorGroupActionsPiece:
@@ -165,7 +184,3 @@ ActorGroupActionsPieceActions:
 ActorGroupActionsPieceAction:
   action=Reference
 ;
-
-ActorGroupType:
-  'TODO'
-;  

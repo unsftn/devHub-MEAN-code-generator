@@ -22,7 +22,7 @@ part {
 ->action {
        name: "Delete Article"
        do: delete [prompt: yes]
-       on: { ~"Article"}
+       on: ~"Article"
        who: owner [
                   ~"Admin",
                   ~"Registered"
@@ -30,20 +30,23 @@ part {
        }
 
 ->action {
-       name: Read Article
+       name: "Read Article"
        do: read
+       on: ~"Article"
        who: *
        }
 
 ->action {
        name: "Edit Article"
-       do: edit
+       do: update
+       on: ~"Article"
        who: owner
        }
 
 ->action {
        name: "Create Article"
        do: create
+       on: ~"Article"
        who: [
             ~"Admin",
             ~"Registered"
@@ -69,9 +72,9 @@ actor {
 actor-group {
             name: "Article Reader"
             actions: ~"Read Article"
-            }
+        }
 
 actor-group {
             name: "Article Writter"
             actions: ~"Create Article"            
-            }
+        }
