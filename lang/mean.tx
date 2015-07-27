@@ -41,7 +41,7 @@ PartPropertiesPiece:
 ;
 
 Property:
-  '[' name=STRING ',' type=Type ']'
+  '[' name=STRING ',' type=Type ',' ('visible')?']'
 ;
 
 Type:
@@ -49,7 +49,7 @@ Type:
 ;
 
 Reference:
-  'TODO'
+  '~'name=STRING
 ;
   
 PartActionPiece:
