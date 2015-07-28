@@ -14,7 +14,7 @@ python3 dispatcher.py
 ## Execution steps
 1. program loads DSL definition from ```lang/mean.tx``` and generate its meta model alongside its visual representation in  ```VISUALIZATION_DIR```.
 2. program generate program model based on meta model from previous step.
-3. Dispatcher calls all the generators to fill templates.
+3. dispatcher calls all the generators to fill templates.
 
 ### Upcoming
 Every template should have corresponding generator module, dispatcher imports these modules from ```GENERATORS_DIR``` and runs theirs ```generate()``` function.
