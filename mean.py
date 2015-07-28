@@ -1,5 +1,4 @@
 import os
-import sys
 from textx.metamodel import metamodel_from_file
 from textx.export import metamodel_export, model_export
 
