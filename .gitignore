@@ -12,3 +12,6 @@ visualization/
 
 # PyCharm files
 .idea
+
+# Python
+__pycache__
