@@ -1,11 +1,14 @@
 import os
+import sys
 from textx.metamodel import metamodel_from_file
 from textx.export import metamodel_export, model_export
 
 # Project setup
 VISUALIZATION_DIR = "visualization"
 
-current_dir = os.path.dirname(__file__)
+# current_dir = os.path.dirname(__file__)
+# __file__ is unbound in interactive mode
+current_dir = os.getcwd()
 visualization_dir = os.path.join(current_dir, VISUALIZATION_DIR)
 if not os.path.exists(visualization_dir):
     os.makedirs(visualization_dir)
