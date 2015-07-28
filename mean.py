@@ -3,7 +3,7 @@ from textx.metamodel import metamodel_from_file
 from textx.export import metamodel_export, model_export
 
 def mean_model(file_name):
-    """Generates program model from '/examples' and returns it"""
+    """Generates program model from '/examples' and returns it."""
 
     # Project setup
     VISUALIZATION_DIR = "visualization"
