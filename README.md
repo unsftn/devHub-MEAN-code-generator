@@ -5,6 +5,7 @@ Development of DSL for web applications based on the MEAN stack.
 - Python 3+
 - [Arpeggio](https://github.com/igordejanovic/Arpeggio)
 - [textX](https://github.com/igordejanovic/textX)
+- [jinja2](https://github.com/mitsuhiko/jinja2)
 
 ## Run
 ```
