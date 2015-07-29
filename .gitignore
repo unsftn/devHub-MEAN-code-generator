@@ -16,3 +16,6 @@ visualization/
 
 # Python
 __pycache__
+
+# generated code
+gen/
