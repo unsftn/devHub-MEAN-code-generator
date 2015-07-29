@@ -24,6 +24,7 @@ module.exports = function({{Items}}) {
         /**
          * Create an item
          */
+
         create: function(req, res) {
             var {{item}} = new {{Item}}(req.body);
             {{item}}.user = req.user;
@@ -34,8 +35,7 @@ module.exports = function({{Items}}) {
                         error: 'Cannot save the item'
                     });
                 }
-
-                {{Items}}.events.publish('{{part.do.create}}', {
+                {{Items}}.events.publish('{{createAction}}', {
                     description: req.user.name + ' created ' + req.body.title + ' {{item}}.'
                 });
 
@@ -58,7 +58,7 @@ module.exports = function({{Items}}) {
                     });
                 }
 
-                {{Items}}.events.publish('{{part.do.edit}}', {
+                {{Items}}.events.publish('{{editAction}}', {
                     description: req.user.name + ' updated ' + req.body.title + ' {{item}}.'
                 });
 
@@ -79,7 +79,7 @@ module.exports = function({{Items}}) {
                     });
                 }
 
-                {{Items}}.events.publish('{{part.do.delete}}', {
+                {{Items}}.events.publish('{{deleteAction}}', {
                     description: req.user.name + ' deleted ' + {{item}}.title + ' {{item}}.'
                 });
 
@@ -91,7 +91,7 @@ module.exports = function({{Items}}) {
          */
         show: function(req, res) {
 
-            {{Items}}.events.publish('{{part.do.read}}', {
+            {{Items}}.events.publish('{{readAction}}', {
                 description: req.user.name + ' read ' + req.{{item}}.title + ' {{item}}.'
             });
 
