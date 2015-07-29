@@ -12,6 +12,7 @@ Development of DSL for web applications based on the MEAN stack.
 cd /path/to/project
 python3 dispatcher.py
 ```
+Generated code structure is in ```/path/to/project/gen/```.
 ## Execution steps
 1. program loads DSL definition from ```lang/mean.tx``` and generates its meta model alongside its visual representation in  ```VISUALIZATION_DIR```.
 2. program generate program model from test case based on meta model from previous step (test program is ```examples/clue-example.mean```).
