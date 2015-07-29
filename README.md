@@ -12,7 +12,7 @@ cd /path/to/project
 python3 dispatcher.py
 ```
 ## Execution steps
-1. program loads DSL definition from ```lang/mean.tx``` and generate its meta model alongside its visual representation in  ```VISUALIZATION_DIR```.
+1. program loads DSL definition from ```lang/mean.tx``` and generates its meta model alongside its visual representation in  ```VISUALIZATION_DIR```.
 2. program generate program model from test case based on meta model from previous step (test program is ```examples/clue-example.mean```).
 3. dispatcher calls all the generators to fill templates.
 
