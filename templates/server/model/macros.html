@@ -1,13 +1,13 @@
 {% macro def_input(item, property) %}
     {% if property.name == "title" %}
 {{property.name}}: {
-        type: {{property.type.concreteType}},
+        type: {{property.type.concreteType|inputType}},
         default: '',
         trim: true
     },
     {% elif property.name == "content" %}
 {{property.name}}: {
-        type: {{property.type.concreteType}},
+        type: {{property.type.concreteType|inputType}},
         default: '',
         trim: true
     },

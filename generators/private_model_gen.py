@@ -7,11 +7,16 @@ import copy
 TEMPLATE_DIR = os.path.join("server", "model")
 TEMPLATE_NAME = "model.js"
 
+def inputType(type):
+    if type == "String":
+        return "text"
+    return "String"
 
 def generate(model):
 
     env = Environment(trim_blocks=True, lstrip_blocks=True, loader=PackageLoader("templates", TEMPLATE_DIR))
     template = env.get_template(TEMPLATE_NAME)
+    env.filters["inputType"] = inputType
 
     class Property(object):
         def __init__(self, name, type):
@@ -54,7 +59,7 @@ def generate(model):
             item = Item(itemName)
             item.properties = properties
 
-            rendered = template.render({'item': item})
+            rendered = template.render({ 'item': item})
 
             file_path = os.path.join(mean_gen_config.GEN_DIR, itemName_pl.lower(), TEMPLATE_DIR)
             if not os.path.exists(file_path):
