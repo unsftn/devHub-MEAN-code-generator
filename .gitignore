@@ -12,6 +12,7 @@ visualization/
 
 # PyCharm files
 .idea
+*.pyc
 
 # Python
 __pycache__
