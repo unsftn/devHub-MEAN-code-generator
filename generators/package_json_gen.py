@@ -3,10 +3,9 @@ import mean_gen_config
 from jinja2.environment import Environment
 from jinja2.loaders import PackageLoader
 
-TEMPLATE_NAME = "app.js"
+TEMPLATE_NAME = "package.json"
 
 def generate(model):
-
     parts = [block for block in model.blocks if block.__class__.__name__ == "PartType"]
 
     for part in parts:
@@ -17,10 +16,8 @@ def generate(model):
 
         env = Environment(trim_blocks=True, lstrip_blocks=True, loader=PackageLoader(mean_gen_config.TEMPLATES_DIR, '.'))
         template = env.get_template(TEMPLATE_NAME)
-        rendered = template.render({'ModuleName': part_pl.capitalize(),
-                                    'DBName': part_pl,
-                                    'PartNamePlural': part_pl,
-                                    'PartNameSingular': part.namePiece.partname.lower()})
+        rendered = template.render({'items': part_pl,
+                                    'Items': part_pl.capitalize()})
 
         file_name = os.path.join(part_dir, TEMPLATE_NAME)
         with open(file_name, "w+") as f:
