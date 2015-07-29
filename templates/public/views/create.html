@@ -6,7 +6,7 @@
     <div class="form-group" ng-class="{ 'has-error' : submitted && {{ formName }}.{{ property.name }}.$invalid }">
       <label mean-token="'create-{{ property.name }}'" class="col-md-3 control-label">{{ property.label }}</label>
       <div class="col-md-9">
-        {{macros.def_input(component)}}
+        {{macros.def_input(item, property)}}
         <div ng-show="submitted && {{ formName }}.{{ property.name }}.$invalid" class="help-block">
           <p ng-show="{{ formName }}.{{ property.name }}.$error.required">{{ property.label }} is required</p>
         </div>
@@ -16,8 +16,8 @@
     <div class="form-group">
       <label mean-token="'permissions'" for="permissions" class="col-md-3 control-label">Permissions</label>
       <div class="col-md-9">
-         <ui-select multiple ng-model="{{ {{ item.name }} }}.permissions" append-to-body="'true'" on-select="selectPermission()">
-            <ui-select-match placeholder="Select permissions..." ng-click="showDescendants();">{{${{ item.name }}}}</ui-select-match>
+         <ui-select multiple ng-model="{{ item.name }}.permissions" append-to-body="'true'" on-select="selectPermission()">
+            <ui-select-match placeholder="Select permissions..." ng-click="showDescendants();">{% raw %}{{$item}}{% endraw %}</ui-select-match>
             <ui-select-choices repeat="circle in availableCircles | filter:$select.search" name="permissions">
               {{circle}}
             </ui-select-choices>
