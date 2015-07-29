@@ -7,7 +7,7 @@ TEMPLATE_DIR = os.path.join("server", "controller")
 TEMPLATE_NAME = "controller.js"
 
 
-def generate(model, gen_dir):
+def generate(model):
     templateLoader = Environment(loader=PackageLoader("templates", TEMPLATE_DIR))
     template = templateLoader.get_template(TEMPLATE_NAME)
     for block in model.blocks:
@@ -22,11 +22,11 @@ def generate(model, gen_dir):
             rendered = template.render({'Item' : itemName,'item': itemName.lower(), 'Items': itemName_pl, 'items': itemName_pl.lower(),
                                     'createAction': createAction, 'editAction': editAction,
                                     "deleteAction": deleteAction, 'readAction': readAction})
-            file_path = os.path.join(gen_dir, itemName_pl.lower(), TEMPLATE_DIR)
+            file_path = os.path.join(gen_cfg.GEN_DIR, itemName_pl.lower(), TEMPLATE_DIR)
             if not os.path.exists(file_path):
                 os.makedirs(file_path)
 
             file_name = os.path.join(file_path, TEMPLATE_NAME)
             with open(file_name, "w+") as f:
                 f.write(rendered)
-                print('generated ' + file_name)
+                print(gen_cfg.GENERATED_MESSAGE + file_name)
