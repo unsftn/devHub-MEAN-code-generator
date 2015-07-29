@@ -1,3 +1,4 @@
+{% import 'macros.html' as macros %}
 'use strict';
 
 /**
@@ -10,57 +11,32 @@ var mongoose = require('mongoose'),
 // TODO resiti ostale stvari
 
 var ArticleSchema = new Schema({
-{%for propertie in part.properties}
-  {{propertieName}}: {
-    {{propertieField}}: Date,
-    {{propertieField}}: Date.now
-  },
-  {{propertieName}}: {
-    {{propertieField}}: String,
-    {{propertieField}}: true,
-    {{propertieField}}: true
-  },
-  {{propertieName}}: {
-    {{propertieField}}: String,
-    {{propertieField}}: true,
-    {{propertieField}}: true
-  },
-  {{propertieName}}: {
-    {{propertieField}}: Schema.ObjectId,
-    {{propertieField}}: 'User'
-  },
-  {{propertieName}}: {
-    {{propertieField}}: Array
-  },
-  {{propertieName}}: {
-    {{propertieField}}: Array
-  }
+    {% for property in item.properties %}
+    {{macros.def_input(item, property)}}
+    {% endfor %}
 });
-{%endfor %}
-
 /**
  * Validations
  */
- {% for propertie in part.properties %}
+    {% for property in item.properties %}
 
-ArticleSchema.path('{{propertieName}}').validate(function({{propertieName}}) {
-  return !!{{propertieName}};
-}, '{{propertieName}} cannot be blank');
+ArticleSchema.path('{{property.name}}').validate(function({{property.name}}) {
+  return !!{{property.name}};
+}, '{{property.name}} cannot be blank');
 
-ArticleSchema.path('{{propertieName}}').validate(function({{propertieName}}) {
-  return !!{{propertieName}};
-}, '{{propertieName}} cannot be blank');
+ArticleSchema.path('{{property.name}}').validate(function({{property.name}}) {
+  return !!{{property.name}};
+}, '{{property.name}} cannot be blank');
 
-{%endfor %}
-
+    {% endfor %}
 /**
  * Statics
  */
-ArticleSchema.statics.load = function(id, cb) {
+{{item.name}}Schema.statics.load = function(id, cb) {
   this.findOne({
     _id: id
   }).populate('user', 'name username').exec(cb);
 };
 
-mongoose.model('{{part.name}}', ArticleSchema);
+mongoose.model('{{item.name}}', {{item.name}}Schema);
 
