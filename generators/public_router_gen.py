@@ -3,8 +3,8 @@ from jinja2.environment import Environment
 from jinja2.loaders import PackageLoader
 import mean_gen_config as gen_cfg
 
-TEMPLATE_DIR = os.path.join("public", "controller")
-TEMPLATE_NAME = "controller.js"
+TEMPLATE_DIR = os.path.join("public", "routes")
+TEMPLATE_NAME = "router.js"
 
 def generate(model, gen_dir):
 
@@ -16,7 +16,7 @@ def generate(model, gen_dir):
             itemName = block.namePiece.partname
             itemName_pl = itemName + gen_cfg.PLURAL
 
-            rendered = template.render({'item': itemName.lower(), 'Items': itemName_pl, 'items': itemName_pl.lower()})
+            rendered = template.render({'item': itemName.lower(), 'items': itemName_pl.lower()})
 
             file_path = os.path.join(gen_dir, itemName_pl.lower(), TEMPLATE_DIR)
             if not os.path.exists(file_path):
