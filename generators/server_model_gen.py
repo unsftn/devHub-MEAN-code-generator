@@ -65,7 +65,7 @@ def generate(model):
             if not os.path.exists(file_path):
                 os.makedirs(file_path)
 
-            file_name = os.path.join(file_path, TEMPLATE_NAME)
+            file_name = os.path.join(file_path, "article.js")
             with open(file_name, "w+") as f:
                 f.write(rendered)
                 print(mean_gen_config.GENERATED_MESSAGE + file_name)

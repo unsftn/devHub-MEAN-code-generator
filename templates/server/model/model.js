@@ -13,6 +13,9 @@ var ArticleSchema = new Schema({
     {% for property in item.properties %}
     {{macros.def_input(item, property)}}
     {% endfor %}
+    permissions: {
+    type: Array
+  },
 });
 /**
  * Validations
