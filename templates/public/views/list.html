@@ -12,9 +12,11 @@
           </a>
         </span>
       </h2>
-      {#
-        Here goes the rest of the item properties that will be displayed...
-      #}
+      {% for property in properties %}
+        {% if not loop.first and property.visibility == 'visible' %}
+            <div>{{property.name}}: {% raw %}{{{% endraw %}{{ item }}.{{property.name}}{% raw %}}}{% endraw %}</div>
+        {% endif %}
+      {% endfor %}
     </li>
   </ul>
   <h1 data-ng-hide="!{{ items }} || {{ items }}.length">No {{ items }} yet. <br> Why don't you <a href="/{{ items }}/create">Create One</a>?</h1>

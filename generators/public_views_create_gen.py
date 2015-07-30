@@ -21,7 +21,7 @@ def generate(model):
             itemName_pl = itemName + mean_gen_config.PLURAL
             props = block.propertiesPiece.properties
 
-            properties = [models.Property(prop.name, prop.type) for prop in props]
+            properties = [models.Property(prop.name, prop.type, prop.visibility) for prop in props]
 
 
             item = models.Item(itemName)

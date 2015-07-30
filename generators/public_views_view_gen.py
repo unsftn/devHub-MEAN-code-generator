@@ -3,16 +3,13 @@ from jinja2.environment import Environment
 from jinja2.loaders import PackageLoader
 import mean_gen_config
 import generators.utils.public_views_models as models
-import generators.utils.filters as filters
 
 TEMPLATE_DIR = os.path.join("public", "views")
-TEMPLATE_NAME = "edit.html"
+TEMPLATE_NAME = "view.html"
 
 def generate(model):
 
     env = Environment(trim_blocks=True, lstrip_blocks=True, loader=PackageLoader("templates", TEMPLATE_DIR))
-    #dodajemo filter pod nazivom inputType
-    env.filters["inputType"] = filters.inputType
     template = env.get_template(TEMPLATE_NAME)
 
     for block in model.blocks:
@@ -23,10 +20,12 @@ def generate(model):
 
             properties = [models.Property(prop.name, prop.type, prop.visibility) for prop in props]
 
+
             item = models.Item(itemName)
             item.properties = properties
 
-            rendered = template.render({'ControllerName': (itemName + 'Controller'), 'formName': itemName.lower(), 'item': item})
+            rendered = template.render({'ControllerName': (itemName + 'Controller'), 'item': itemName.lower(),
+                'items': itemName_pl.lower(), 'properties': item.properties})
 
             file_path = os.path.join(mean_gen_config.GEN_DIR, itemName_pl.lower(), TEMPLATE_DIR)
             if not os.path.exists(file_path):

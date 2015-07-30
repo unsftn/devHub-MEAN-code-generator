@@ -1,7 +1,8 @@
 class Property(object):
-        def __init__(self, name, type):
+        def __init__(self, name, type, visibility):
             self.name = name
             self.type = type
+            self.visibility = visibility
 
         @property
         def label(self):
@@ -11,7 +12,7 @@ class Property(object):
             tip = self.type
             if self.type.__class__.__name__ == 'Reference':
                 tip = 'Reference'
-            return self.name + ":" + tip + ":" + self.label
+            return self.name + ":" + tip + ":" + self.label + ":" + self.visibility
 
 
 class Item(object):
