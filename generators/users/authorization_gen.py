@@ -3,7 +3,7 @@ import mean_gen_config
 from jinja2.environment import Environment
 from jinja2.loaders import PackageLoader
 
-TEMPLATE_NAME = "app.js"
+TEMPLATE_NAME = "authorization.js"
 
 def generate(model):
     env = Environment(trim_blocks=True, lstrip_blocks=True,

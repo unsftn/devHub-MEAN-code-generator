@@ -14,7 +14,6 @@ def generate(model):
         if block.__class__.__name__ == 'PartType':
             itemName = block.namePiece.partname
             itemName_pl = itemName + gen_cfg.PLURAL
-        if block.__class__.__name__ == 'ActionType':
             createAction = "create"
             editAction = "update"
             deleteAction = "delete"
@@ -26,7 +25,7 @@ def generate(model):
             if not os.path.exists(file_path):
                 os.makedirs(file_path)
 
-            file_name = os.path.join(file_path, TEMPLATE_NAME)
+            file_name = os.path.join(file_path, "articles.js")
             with open(file_name, "w+") as f:
                 f.write(rendered)
                 print(gen_cfg.GENERATED_MESSAGE + file_name)

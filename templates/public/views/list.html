@@ -1,11 +1,10 @@
-{% import 'macros.html' as macros %}
 <section data-ng-controller="{{ ControllerName }}" data-ng-init="find()">
   <ul class="{{ items }} unstyled">
     <li data-ng-repeat="{{ item }} in {{ items }}">
       <h2>
-        <a data-ng-href="/{{ items }}/{{{{ item }}._id}}">{{{{ item }}.name}}</a>
+        <a data-ng-href="/{{ items }}/{% raw %}{{{% endraw %}{{ item }}._id{% raw %}}}{% endraw %}">{% if properties|length > 0 %}{% raw %}{{{% endraw %}{{ item }}.{{(properties|first()).name}}{% raw %}}}{% endraw %}{% endif %}</a>
         <span data-ng-if="hasAuthorization({{ item }})">
-          <a class="btn" href="/{{ items }}/{{{{ item }}._id}}/edit">
+          <a class="btn" href="/{{ items }}/{% raw %}{{{% endraw %}{{ item }}._id{% raw %}}}{% endraw %}/edit">
             <i class="glyphicon glyphicon-edit"></i>
           </a>
           <a class="btn" data-ng-click="remove({{ item }});">
