@@ -54,7 +54,7 @@ def generate(model):
             itemName_pl = itemName + mean_gen_config.PLURAL
             props = block.propertiesPiece.properties
 
-            properties = [Property(prop.name, prop.type.concreteType) for prop in props]
+            properties = [Property(prop.name, prop.type) for prop in props]
 
             item = Item(itemName)
             item.properties = properties

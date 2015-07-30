@@ -10,8 +10,10 @@ TEMPLATE_NAME = "create.html"
 def inputType(type):
     if type == "String":
         return "text"
-    elif type == "Text":
-        return "textarea"
+    elif type == 'Boolean':
+        return 'checkbox'
+    elif type.__class__.__name__ == 'Reference':
+        return 'Reference'
     #moglo bi se dodati i za ostale tipove html input polja (uz prosirenje gramatike)
     #tipa date, password itd.
     return "text"
@@ -33,7 +35,10 @@ def generate(model):
             return self.name.capitalize()
 
         def __str__(self):
-            return self.name + ":" + self.label
+            tip = self.type
+            if self.type.__class__.__name__ == 'Reference':
+                tip = 'Reference'
+            return self.name + ":" + tip + ":" + self.label
 
 
     class Item(object):
@@ -59,7 +64,9 @@ def generate(model):
             itemName_pl = itemName + mean_gen_config.PLURAL
             props = block.propertiesPiece.properties
 
-            properties = [Property(prop.name, prop.type.concreteType) for prop in props]
+            properties = [Property(prop.name, prop.type) for prop in props]
+            for p in properties:
+                print(p)
 
             item = Item(itemName)
             item.properties = properties
