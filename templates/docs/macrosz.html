@@ -1,0 +1,5 @@
+{% macro def_model(item, property) %}
+    {%if property.name == "content" %}
+    required: ['{{property.name}}'],
+    {% endif %}
+{% endmacro %}
