@@ -1,10 +1,17 @@
-{% import 'macros.html' as macros %}
+{% import 'macrosz.html' as macros %}
 exports.models = {
 
-  {{ Item }}: {
-    id: '{{ Item }}',
-    {% for property in item.properties %}
-    {{macros.def_input(item, property)}}
+  {{ item.name }}: {
+    id: '{{ item.name }}',
+    {% for property in item.properties %}{{macros.def_model(item, property)}}{% endfor %}
+    properties:
+    {%for property in item.properties %}
+    {{property.name}}: {
+        type: '{{property.type |inputType}}',
+        description : 'This is cool'
+    {% if not loop.last %}
+    },
+    {% endif %}
     {% endfor %}
     }
   }

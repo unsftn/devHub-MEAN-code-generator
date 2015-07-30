@@ -65,8 +65,7 @@ def generate(model):
             props = block.propertiesPiece.properties
 
             properties = [Property(prop.name, prop.type) for prop in props]
-            for p in properties:
-                print(p)
+
 
             item = Item(itemName)
             item.properties = properties
