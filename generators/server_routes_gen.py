@@ -20,7 +20,7 @@ def generate(model):
             if not os.path.exists(file_path):
                 os.makedirs(file_path)
 
-            file_name = os.path.join(file_path, TEMPLATE_NAME)
+            file_name = os.path.join(file_path, "articles.js")
             with open(file_name, "w+") as f:
                 f.write(rendered)
                 print(gen_cfg.GENERATED_MESSAGE + file_name)
