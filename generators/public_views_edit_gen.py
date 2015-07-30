@@ -6,7 +6,7 @@ import generators.utils.public_views_models as models
 import generators.utils.filters as filters
 
 TEMPLATE_DIR = os.path.join("public", "views")
-TEMPLATE_NAME = "create.html"
+TEMPLATE_NAME = "edit.html"
 
 def generate(model):
 
