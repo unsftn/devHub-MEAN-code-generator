@@ -1,15 +1,14 @@
 {% macro def_input(item, property) %}
     <label>{{property.label}}</label>
-    {% if property.type.concreteType == "Combobox" %}
+    {% if property.type|inputType == "Reference" %}
         <select>
-        <option></option>
-        {% for possibleValue in property.values %}
-        <option>{{possibleValue}}</option>
-        {% endfor %}
+        <option>User 1</option>
+        <option>User 2</option>
+        {# TODO: Fill this combobox with all appropriate users #}
         </select>
-    {% elif property.type.concreteType == "Text" %}
+    {% elif property.type == "Text" %}
         <textarea name = "{{ property.name }}" class="form-control" data-ng-model="{{ item.name }}.{{ property.name }}" id="{{ property.name }}" cols="30" rows="10" placeholder="{{ property.label }}" required></textarea>
     {% else %}
-        <input name = "{{ property.name }}" type = "{{property.type.concreteType|inputType}}" class="form-control" data-ng-model="{{ item.name }}.{{ property.name }}" id="{{ property.name }}" placeholder="{{ property.label }}" required>
+        <input name = "{{ property.name }}" type = "{{ property.type|inputType }}" class="form-control" data-ng-model="{{ item.name }}.{{ property.name }}" id="{{ property.name }}" placeholder="{{ property.label }}" required>
     {% endif %}
 {% endmacro %}

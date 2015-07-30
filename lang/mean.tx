@@ -53,7 +53,7 @@ Visible:
 ;
 
 Type:
-  concreteType = 'String' | 'Text' | 'Number' | 'Boolean' | Reference
+  'String' | 'Text' | 'Number' | 'Boolean' | Reference
 ;
 
 Reference:
