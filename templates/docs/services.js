@@ -9,10 +9,10 @@ exports.load = function(swagger, parms) {
       description: '{{ Item }} operations',
       path: '/{{ items }}',
       method: 'GET',
-      summary: 'Get all {{ Item }}s',
+      summary: 'Get all {{ Items }}',
       notes: '',
-      type: '{{ Item }}',
-      nickname: 'get{{ Item }}s',
+      type: '{{ Items }}',
+      nickname: 'get{{ Items }}',
       produces: ['application/json'],
       params: searchParms
     }

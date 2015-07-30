@@ -2,7 +2,8 @@ import os
 from jinja2.environment import Environment
 from jinja2.loaders import PackageLoader
 import mean_gen_config
-import copy
+import generators.utils.filters as filters
+
 
 TEMPLATE_DIR = os.path.join("docs")
 TEMPLATE_NAME = "models.js"
@@ -17,8 +18,7 @@ def inputType(type):
 def generate(model):
 
     env = Environment(trim_blocks=True, lstrip_blocks=True, loader=PackageLoader("templates", TEMPLATE_DIR))
-    #dodajemo filter pod nazivom inputType
-    env.filters["inputType"] = inputType
+    env.filters["inputType"] = filters.inputType
     template = env.get_template(TEMPLATE_NAME)
 
     class Property(object):
