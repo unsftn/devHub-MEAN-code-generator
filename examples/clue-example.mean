@@ -58,16 +58,16 @@ part {
 actor {
       name: "Admin"
       group: [
-             ~"Reader",
-             ~"Writter"
+             ~"Article Reader",
+             ~"Article Writter"
              ]
       }
 
 actor {
       name: "Registered"
       group: [
-             ~"Reader",
-             ~"Writter"
+             ~"Article Reader",
+             ~"Article Writter"
              ]
       }
 
