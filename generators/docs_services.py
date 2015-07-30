@@ -1,4 +1,4 @@
-import osservices
+import os
 import mean_gen_config as gen_cfg
 from jinja2.environment import Environment
 from jinja2.loaders import PackageLoader, FileSystemLoader
