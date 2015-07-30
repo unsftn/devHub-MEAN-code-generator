@@ -9,7 +9,7 @@ var mongoose = require('mongoose'),
 
 
 
-var ArticleSchema = new Schema({
+var {{item.name}}Schema = new Schema({
     {% for property in item.properties %}
     {{macros.def_input(item, property)}}
     {% endfor %}
@@ -22,18 +22,18 @@ var ArticleSchema = new Schema({
  */
 
 {% for property in item.properties %}
-ArticleSchema.path('{{property.name}}').validate(function({{property.name}}) {
+{{item.name}}Schema.path('{{property.name}}').validate(function({{property.name}}) {
   return !!{{property.name}};
 }, '{{property.name}} cannot be blank');
 {% endfor %}
 /**
  * Statics
  */
-ArticleSchema.statics.load = function(id, cb) {
+{{item.name}}Schema.statics.load = function(id, cb) {
   this.findOne({
     _id: id
   }).populate('user', 'name username').exec(cb);
 };
 
-mongoose.model('{{item.name}}', ArticleSchema);
+mongoose.model('{{item.name}}', {{item.name}}Schema);
 
