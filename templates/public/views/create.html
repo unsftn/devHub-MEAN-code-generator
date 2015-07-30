@@ -28,7 +28,7 @@
      <div class="form-group" ng-show="descendants.length">
         <label mean-token="'descendants'" for="descendants" class="col-md-3 control-label">Descendants</label>
         <div class="col-md-9">
-          <span ng-repeat="descendant in descendants">{{descendant}} <span ng-hide="$last">, </span></span>
+          <span ng-repeat="descendant in descendants">{% raw %}{{descendant}}{% endraw %}<span ng-hide="$last">, </span></span>
         </div>
     </div>
 
