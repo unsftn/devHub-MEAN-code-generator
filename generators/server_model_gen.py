@@ -34,7 +34,7 @@ def generate(model):
     class Item(object):
 
         def __init__(self, name):
-            self.name = name.lower()
+            self.name = name
             self._properties = []
 
         @property
