@@ -16,7 +16,7 @@ def generate(model):
             itemName = block.namePiece.partname
             itemName_pl = itemName + mean_gen_config.PLURAL
 
-            rendered = template.render({'item': itemName.lower(), 'Items': itemName_pl, 'items': itemName_pl.lower()})
+            rendered = template.render({'ControllerName': itemName + 'Controller','item': itemName.lower(), 'Items': itemName_pl, 'items': itemName_pl.lower()})
 
             file_path = os.path.join(mean_gen_config.GEN_DIR, itemName_pl.lower(), TEMPLATE_DIR)
             if not os.path.exists(file_path):

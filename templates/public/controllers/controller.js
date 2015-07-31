@@ -4,12 +4,12 @@ angular.module('mean.{{ items }}').controller('{{ ControllerName }}', ['$scope',
   function($scope, $stateParams, $location, Global, {{ Items }}, MeanUser, Circles) {
     $scope.global = Global;
 
-    /*
-    $scope.hasAuthorization = function(article) {
-      if (!article || !article.user) return false;
-      return MeanUser.isAdmin || article.user._id === MeanUser.user._id;
+
+    $scope.hasAuthorization = function({{ item }}) {
+      if (!{{ item }} || !{{ item }}.user) return false;
+      return MeanUser.isAdmin || {{ item }}.user._id === MeanUser.user._id;
     };
-    */
+
 
     $scope.availableCircles = [];
 

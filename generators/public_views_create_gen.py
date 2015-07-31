@@ -28,7 +28,7 @@ def generate(model):
             item = models.Item(itemName)
             item.properties = properties
 
-            rendered = template.render({'ControllerName': (itemName + 'Controller'), 'formName': itemName.lower(), 'item': item})
+            rendered = template.render({'ControllerName': (itemName + 'Controller'), 'formName': itemName.lower() + 'Form', 'item': item})
 
             file_path = os.path.join(mean_gen_config.GEN_DIR, itemName_pl.lower(), TEMPLATE_DIR)
             if not os.path.exists(file_path):
