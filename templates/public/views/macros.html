@@ -1,5 +1,4 @@
 {% macro def_input(item, property) %}
-    <label>{{property.label}}</label>
     {% if property.type|inputType == "Reference" %}
         <select>
         <option>User 1</option>

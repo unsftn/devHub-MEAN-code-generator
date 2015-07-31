@@ -3,7 +3,7 @@ import mean_gen_config as gen_cfg
 from jinja2.environment import Environment
 from jinja2.loaders import PackageLoader, FileSystemLoader
 
-TEMPLATE_DIR = os.path.join("server", "controller")
+TEMPLATE_DIR = os.path.join("server", "controllers")
 TEMPLATE_NAME = "controller.js"
 
 
@@ -25,7 +25,7 @@ def generate(model):
             if not os.path.exists(file_path):
                 os.makedirs(file_path)
 
-            file_name = os.path.join(file_path, TEMPLATE_NAME)
+            file_name = os.path.join(file_path, itemName_pl.lower() + '.js')
             with open(file_name, "w+") as f:
                 f.write(rendered)
                 print(gen_cfg.GENERATED_MESSAGE + file_name)

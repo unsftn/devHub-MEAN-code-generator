@@ -3,7 +3,7 @@
 app "DevHub"
 
 part {
-    name: "Article"
+    name: "Strudla"
     multi: yes
     properties: {
                 ["title", String, visible],

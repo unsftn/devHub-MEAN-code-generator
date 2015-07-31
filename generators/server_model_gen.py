@@ -2,14 +2,13 @@ import os
 from jinja2.environment import Environment
 from jinja2.loaders import PackageLoader
 import mean_gen_config
-import copy
 
 TEMPLATE_DIR = os.path.join("server", "model")
 TEMPLATE_NAME = "model.js"
 
 def inputType(type):
     if type == "String":
-        return "text"
+        return "String"
     return "String"
 
 def generate(model):

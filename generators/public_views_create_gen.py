@@ -22,7 +22,8 @@ def generate(model):
             props = block.propertiesPiece.properties
 
             properties = [models.Property(prop.name, prop.type, prop.visibility) for prop in props]
-
+            for p in properties:
+                print(p.type)
 
             item = models.Item(itemName)
             item.properties = properties

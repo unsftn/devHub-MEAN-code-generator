@@ -19,7 +19,7 @@
          <ui-select multiple ng-model="{{ item.name }}.permissions" append-to-body="'true'" on-select="selectPermission()">
             <ui-select-match placeholder="Select permissions..." ng-click="showDescendants();">{% raw %}{{$item}}{% endraw %}</ui-select-match>
             <ui-select-choices repeat="circle in availableCircles | filter:$select.search" name="permissions">
-              {{circle}}
+              {% raw %}{{circle}}{% endraw %}
             </ui-select-choices>
           </ui-select>
       </div>

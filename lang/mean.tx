@@ -53,7 +53,7 @@ Visible:
 ;
 
 Type:
-  'String' | 'Text' | 'Number' | 'Boolean' | ref=Reference
+  'String' | 'Text' | 'Number' | 'Boolean' | Reference
 ;
 
 Reference:
