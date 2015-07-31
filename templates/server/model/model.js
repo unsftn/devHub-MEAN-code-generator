@@ -14,8 +14,8 @@ var {{item.name}}Schema = new Schema({
     {{macros.def_input(item, property)}}
     {% endfor %}
     permissions: {
-    type: Array
-  },
+        type: Array
+    }
 });
 /**
  * Validations

@@ -34,7 +34,7 @@ def generate(model):
     class Item(object):
 
         def __init__(self, name):
-            self.name = name.lower()
+            self.name = name
             self._properties = []
 
         @property
@@ -65,7 +65,7 @@ def generate(model):
             if not os.path.exists(file_path):
                 os.makedirs(file_path)
 
-            file_name = os.path.join(file_path, "article.js")
+            file_name = os.path.join(file_path, TEMPLATE_NAME)
             with open(file_name, "w+") as f:
                 f.write(rendered)
                 print(mean_gen_config.GENERATED_MESSAGE + file_name)
